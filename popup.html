@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quick Notes</title>
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --input-bg: #fff;
+      --note-bg: #fff;
+      --border-color: #ddd;
+      --accent-color: #000000;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --text-color: #f1f1f1;
+      --input-bg: #2e2e2e;
+      --note-bg: #2a2a2a;
+      --border-color: #444;
+      --accent-color: #000000;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #fefefe;
+      --text-color: #222222;
+      --input-bg: #ffffff;
+      --note-bg: #f9f9f9;
+      --border-color: #dddddd;
+      --accent-color: #444444;
+    }
+
+    html, body {
+      width: 360px;
+      height: 520px;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+    }
+
+    .button-sidebar {
+      width: 60px;
+      padding: 10px 5px;
+      background-color: var(--bg-color);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .button-sidebar button {
+      width: 44px;
+      height: 44px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .button-sidebar button:hover {
+      background-color: #333;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin-bottom: 8px;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid var(--border-color);
+      background-color: var(--input-bg);
+      color: var(--text-color);
+      box-sizing: border-box;
+    }
+
+    .notes-wrapper {
+      flex-grow: 1;
+      display: flex;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .note-titles {
+      width: 40%;
+      border-right: 1px solid var(--border-color);
+      background-color: var(--note-bg);
+      overflow-y: auto;
+      padding: 6px;
+    }
+
+    .note-titles div {
+      padding: 6px 4px;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-color);
+    }
+
+    .note-titles div:hover {
+      background-color: var(--border-color);
+    }
+
+    .note-display {
+      flex-grow: 1;
+      padding: 8px;
+      overflow-y: auto;
+      background-color: var(--note-bg);
+      font-size: 14px;
+      color: var(--text-color);
+    }
+
+    button.note-delete {
+      margin-top: 8px;
+      padding: 4px 8px;
+      font-size: 12px;
+      border: none;
+      background-color: rgb(153, 20, 47);
+      color: white;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .button-sidebar button img {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+
+  </style>
+</head>
+<body data-theme="light">
+  <div class="button-sidebar">
+  <button id="save" title="Save">
+    <img src="icons/save.png" alt="Save" width="24" height="24">
+  </button>
+  <button id="deleteBtn" title="Delete All">
+    <img src="icons/delete.png" alt="Delete" width="24" height="24">
+  </button>
+  <button id="refreshBtn" title="Refresh">
+    <img src="icons/refresh.png" alt="Refresh" width="24" height="24">
+  </button>
+  <button id="themeToggle" title="Toggle Theme">
+    <img src="icons/theme.png" alt="Toggle Theme" width="24" height="24">
+  </button>
+</div>
+
+
+  <div class="main-content">
+    <input id="title" placeholder="Title" />
+<textarea id="content" rows="4" placeholder="Your note..."></textarea>
+<input id="folder" placeholder="Folder name (optional)" />
+
+<!-- Image Drop Zone -->
+<div id="dropZone" style="border: 2px dashed var(--border-color); padding: 10px; margin: 10px 0; text-align: center; color: var(--text-color);">
+  Drag & Drop Image Here
+</div>
+
+<div class="notes-wrapper">
+  <div id="noteTitles" class="note-titles"></div>
+  <div id="noteDisplay" class="note-display">Select a note to view its content.</div>
+</div>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
