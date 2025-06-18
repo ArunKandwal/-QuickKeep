@@ -1,9 +1,9 @@
 # -QuickKeep
  QuickKeep is a lightweight yet powerful Chrome extension for seamless in-browser note-taking with rich media support.
-![image](https://github.com/user-attachments/assets/a7720312-a655-4aa6-94be-081d055d9805)
-
-
+![image](https://github.com/user-attachments/assets/a7720312-a655-4aa6-94be-081d055d9805)                                                                                                
 This is how it will run on your browser to help with storing temperory data.
+
+
 ![image](https://github.com/user-attachments/assets/e8b119fc-2e29-4813-8126-99ce85ce17b3)
 
 In-Browser Note-Taking
